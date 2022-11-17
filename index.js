@@ -1,5 +1,5 @@
 const todoList = () => {
-  all = [];
+  const all = [];
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -9,13 +9,9 @@ const todoList = () => {
 
   const overdue = () => {
     // Write the date check condition here and return the array of overdue items accordingly.
-    od = [];
-    all.forEach((element) => {
-      if (element.dueDate == yesterday) {
-        od.push(element);
-      }
-    });
-    return od;
+    return all.filter(
+      (item) => item.dueDate < new Date().toLocaleDateString("en-CA")
+    );
     // FILL YOUR CODE HERE
     // ..
     // ..
@@ -24,13 +20,9 @@ const todoList = () => {
 
   const dueToday = () => {
     // Write the date check condition here and return the array of todo items that are due today accordingly.
-    dt = [];
-    all.forEach((element) => {
-      if (element.dueDate == today) {
-        dt.push(element);
-      }
-    });
-    return dt;
+    return all.filter(
+      (item) => item.dueDate === new Date().toLocaleDateString("en-CA")
+    );
     // FILL YOUR CODE HERE
     // ..
     // ..
@@ -39,13 +31,9 @@ const todoList = () => {
 
   const dueLater = () => {
     // Write the date check condition here and return the array of todo items that are due later accordingly.
-    dl = [];
-    all.forEach((element) => {
-      if (element.dueDate == tomorrow) {
-        dl.push(element);
-      }
-    });
-    return dl;
+    return all.filter(
+      (item) => item.dueDate > new Date().toLocaleDateString("en-CA")
+    );
     // FILL YOUR CODE HERE
     // ..
     // ..
@@ -56,9 +44,8 @@ const todoList = () => {
     // Format the To-Do list here, and return the output string as per the format given above.
     const dsl = [];
     list.forEach((e) => {
-      const a = " ";
-      if (e.dueDate == today) {
-        if (e.completed == true) {
+      if (e.dueDate === today) {
+        if (e.completed === true) {
           const a = "[x] " + e.title;
           dsl.push(a);
         } else {
@@ -66,7 +53,7 @@ const todoList = () => {
           dsl.push(a);
         }
       } else {
-        if (e.completed == true) {
+        if (e.completed === true) {
           const a = "[x] " + e.title + " " + e.dueDate;
           dsl.push(a);
         } else {
@@ -75,9 +62,19 @@ const todoList = () => {
         }
       }
     });
-    return dsl.forEach((el) => {
-      console.log(el);
-    });
+    let g = "";
+    for (let i = 0; i < dsl.length; i++) {
+      // eslint-disable-next-line no-undef
+      e = dsl[i];
+      if (i === 0) {
+        // eslint-disable-next-line no-undef
+        g = g + e;
+      } else {
+        // eslint-disable-next-line no-undef
+        g = g + "\n" + e;
+      }
+    }
+    return g;
     // FILL YOUR CODE HERE
     // ..
     // ..
@@ -95,10 +92,6 @@ const todoList = () => {
     toDisplayableList,
   };
 };
-
-// ####################################### #
-// DO NOT CHANGE ANYTHING BELOW THIS LINE. #
-// ####################################### #
 
 const todos = todoList();
 
