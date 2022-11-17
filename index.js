@@ -59,7 +59,7 @@ const todoList = () => {
       const a = " ";
       if (e.dueDate == today) {
         if (e.completed == true) {
-          const a = "[X] " + e.title;
+          const a = "[x] " + e.title;
           dsl.push(a);
         } else {
           const a = "[ ] " + e.title;
@@ -67,7 +67,7 @@ const todoList = () => {
         }
       } else {
         if (e.completed == true) {
-          const a = "[X] " + e.title + " " + e.dueDate;
+          const a = "[x] " + e.title + " " + e.dueDate;
           dsl.push(a);
         } else {
           const a = "[ ] " + e.title + " " + e.dueDate;
